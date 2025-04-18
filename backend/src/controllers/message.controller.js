@@ -3,6 +3,7 @@ import User from "../models/user.model.js";
 export const getUsersForSidebar = async(req, res)=>{
     try {
         const logedInUserId = req.user._id
+        // Tell to mongoDB to find all the users but not the logged in user(ne to logedInUserId) and select everithyng without the password 
         const filteredUsers = await User.find({_id: {$ne:logedInUserId}}).select("-password")
 
         res.status(200).json(filteredUsers)
@@ -54,11 +55,6 @@ export const getMessages = async (req, res) => {
       });
   
       await newMessage.save();
-  
-      const receiverSocketId = getReceiverSocketId(receiverId);
-      if (receiverSocketId) {
-        io.to(receiverSocketId).emit("newMessage", newMessage);
-      }
   
       res.status(201).json(newMessage);
     } catch (error) {
