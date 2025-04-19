@@ -91,7 +91,7 @@ export const logout = (req, res) => {
 };
 
 
-export const updateProfile = async(req, res) =>{
+export const updateProfile = async (req, res) => {
   try {
     const { profilePic } = req.body;
     const userId = req.user._id;
@@ -112,7 +112,7 @@ export const updateProfile = async(req, res) =>{
     console.log("error in update profile:", error);
     res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
 export const checkAuth = (req, res)=>{
   try {
