@@ -7,11 +7,6 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 import bodyParser from "body-parser"
 
-
-// Express 4.0
-
-
-
 dotenv.config()
 
 const app = express()
