@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage"
 import SettingsPage from "./pages/SettingsPage"
 import ProfilePage from "./pages/ProfilePage"
 import Navbar from "./components/navbar";
+import "./App.css"
 
 import {Routes, Route, Navigate} from "react-router-dom"
 import { useAuthStore } from "./store/useAuthStore";
@@ -29,7 +30,7 @@ const App = () => {
   )
 
   return (
-    <div data-theme={theme}>
+    <div data-theme={theme} >
       <Navbar />
       <Routes>
         <Route path="/" element={authUser ? <HomePage /> : <Navigate to="login" />} />
