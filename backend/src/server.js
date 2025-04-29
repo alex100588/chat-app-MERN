@@ -6,10 +6,10 @@ import { connectDB } from "./lib/db.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import bodyParser from "body-parser"
+import { app, server } from "./lib/socket.js"
 
 dotenv.config()
 
-const app = express()
 const port = process.env.PORT
 app.use(bodyParser.json({limit: '50mb'}))
 // extract the json data from the request body
@@ -24,7 +24,7 @@ app.use(cors({
 app.use('/api/auth', authRoutes)
 app.use('/api/messages', messageRoutes)
 
-app.listen(port, ()=>{
+server.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
     connectDB()
 })

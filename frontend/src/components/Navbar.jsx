@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <header
       className="bg-base-300 border-b border-base-300 fixed w-full top-0 z-40 
-    backdrop-blur-lg bg-base-100/80" 
+    backdrop-blur-lg bg-base-100/80"
     >
       <div className="container mx-auto px-4 h-16">
         <div className="flex items-center justify-between h-full">
@@ -43,7 +43,11 @@ const Navbar = () => {
                   <span className="hidden sm:inline">Profile</span>
                 </Link>
 
-                <Link to={'/login'} className="flex gap-2 items-center" onClick={logout}>
+                <Link
+                  to={"/login"}
+                  className="flex gap-2 items-center"
+                  onClick={logout}
+                >
                   <LogOut className="size-5" />
                   <span className="hidden sm:inline">Logout</span>
                 </Link>
