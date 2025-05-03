@@ -5,6 +5,7 @@ import { io } from "socket.io-client";
 
 const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
+
 export const useAuthStore = create((set, get) => ({
   authUser: null,
   isSigningUp: false,
@@ -16,9 +17,14 @@ export const useAuthStore = create((set, get) => ({
 
   checkAuth: async () => {
     try {
-      const res = await axiosInstance.get("/auth/check");
+      if(get().authUser !== null) {
 
-      set({ authUser: res.data });
+        const res = await axiosInstance.get("/auth/check");
+        console.log(res);
+        set({ authUser: res.data });
+      }
+      
+
       get().connectSocket();
     } catch (error) {
       console.log("Error in checkAuth:", error);
